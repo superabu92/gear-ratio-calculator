@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+<script src="js/ng-cordova.min.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter">
+
+    <ion-pane>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Gear Ratio Calculator</h1>
+      </ion-header-bar>
+	  <div class="tabs-striped tabs-background-positive tabs-color-light">
+  <div class="tabs" ng-controller="ctrl">
+  <a class="tab-item" ng-click="myGoBack()">
+   <!--  <i class="icon ion-reply" ></i>
+  </a>
+  <a class="tab-item" href="#/home">
+    <i class="icon ion-home"></i>
+  </a>
+  <a class="tab-item" ng-click="showConfirm()">
+    <i class="icon ion-close"></i> -->
+  </a>
+  </div>
+</div>
+      <ion-content padding="true" class="has-tabs has-header has-footer" data-ng-controller="ctrl">
+	  
+	  <center><item item-wrap-text>
+	  Developed by Azmy, Azimuddin & Harith</item></center>
+		<div class="row"><!-- Row 1 -->
+		<div class="col col-75">
+    <li class="item item-text-wrap">
+Tyre rolling radius
+    </li>
+		</div>
+		<div class="col">
+		<label class="item item-input">
+		<input type="number" data-ng-model="tyre" placeholder="meter"/>
+		</label>
+		</div>
+		</div>
+		<div class="row"><!-- Row 2 -->
+		<div class="col col-75">
+    <li class="item item-text-wrap">
+Coefficient of rolling resistance
+    </li>
+		</div>
+		<div class="col">
+		<label class="item item-input">
+		<input type="number" data-ng-model="cf"/>
+		</label>
+		</div>
+		</div>
+		<div class="row"><!-- Row 3 -->
+		<div class="col col-75">
+    <li class="item item-text-wrap">
+Engine maximum torque
+    </li>
+		</div>
+		<div class="col">
+		<label class="item item-input">
+		<input type="number" data-ng-model="engine" placeholder="Nm"/>
+		</label>
+		</div>
+		</div>
+		<div class="row"><!-- Row 4 -->
+		<div class="col col-75">
+    <li class="item item-text-wrap">
+Vehicle mass
+    </li>
+		</div>
+		<div class="col">
+		<label class="item item-input">
+		<input type="number" data-ng-model="mass" placeholder="kg"/>
+		</label>
+		</div>
+		</div>
+		<div class="row"><!-- Row 5 -->
+		<div class="col col-75">
+    <li class="item item-text-wrap">
+Maximum road adhesion coefficient
+    </li>
+		</div>
+		<div class="col">
+		<label class="item item-input">
+		<input type="number" data-ng-model="max" placeholder=""/>
+		</label>
+		</div>
+		</div>
+		<div class="row"><!-- Row 6 -->
+		<div class="col col-50">
+    <li class="item item-text-wrap">
+Weight distribution F/R
+    </li>
+		</div>
+		<div class="col">
+		<label class="item item-input">
+		<input type="number" data-ng-model="f" placeholder="F %"/>
+		</label>
+		</div>
+		<div class="col">
+		<label class="item item-input">
+		<input type="number" data-ng-model="r" placeholder="R S%"/>
+		</label>
+		</div>
+			</div>
+		
+		</div>
+		<div class="row"><!-- Row 7 -->
+		<div class="col col-75">
+    <li class="item  item-text-wrap">
+CG height to wheelbase ratio h/l    
+	</li>
+		</div>
+		<div class="col">
+		<label class="item item-input">
+		<input type="number" data-ng-model="cg"/>
+		</label>
+		</div>
+		</div>
+		<div class="row"><!-- Row 8 -->
+		<div class="col col-75">
+    <li class="item item-text-wrap">
+Driveline efficiency    
+	</li>
+		</div>
+		<div class="col">
+		<label class="item item-input">
+		<input type="number" data-ng-model="eff" placeholder="%"/>
+		</label>
+		</div>
+		</div>
+		<div class="row"><!-- Row 9 -->
+		<div class="col col-75">
+    <li class="item item-text-wrap">
+Rotation per Minute, rpm 
+	</li>
+		</div>
+		<div class="col">
+		<label class="item item-input">
+		<input type="number" data-ng-model="rpm" placeholder="RPM"/>
+		</label>
+		</div>
+		</div>
+		<div class="row"><!-- Row 10 -->
+		<div class="col col-75">
+    <li class="item item-text-wrap">
+Speed Maximum, Vmax   
+	</li>
+		</div>
+		<div class="col">
+		<label class="item item-input">
+		<input type="number" data-ng-model="vMax" placeholder=""/>
+		</label>
+		</div>
+		</div>
+		<div class="row"><!-- Row 11 -->
+		<div class="col col-75">
+    <li class="item item-text-wrap">
+Factor of k   
+	</li>
+		</div>
+		<div class="col">
+		<label class="item item-input">
+		<input type="number" data-ng-model="k" placeholder=""/>
+		</label>
+		</div>
+		</div>
+		<div class="list"><!-- Row 12 -->
+		<label class="item item-input item-select item-text-wrap">
+		<div class="input-label"> Number of Gear </div>
+		<select id="selectGear">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option selected="selected" value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		</select>
+		</label>
+		</div>
+		<li class="item item-text-wrap">
+	<h3>Please click the button below from top to the bottom step by step, otherwise error will occur and please click reset to restart again. </h3>  </li>
+		<ion-list>
+  <center><ion-radio ng-model="choice" ng-value="'A'" ng-click="kF()">kF, FWD</ion-radio>
+  <ion-radio  ng-model="choice" ng-value="'B'" ng-click="kR()">kR, RWD</ion-radio>
+  <ion-radio ng-model="choice" ng-value="'C'" ng-click="lgFwd()">Low Gear FWD</ion-radio>
+  <ion-radio ng-model="choice" ng-value="'D'" ng-click="lgRwd()">Low Gear RWD</ion-radio>
+    <ion-radio ng-model="choice" ng-value="'E'" ng-click="hGear()">High Gear</ion-radio>
+	<ion-radio ng-model="choice" ng-value="'F'" ng-click="fwdCgp()">FWD Cgp</ion-radio>
+	<ion-radio ng-model="choice" ng-value="'G'" ng-click="rwdCgp()">RWD Cgp</ion-radio>
+	<ion-radio ng-model="choice" ng-value="'H'" ng-click="gear()">FWD & RWD Gear Ratio</ion-radio>
+
+	</center>
+
+  <center><ion-item class="item-assertive" ng-click="reset()">Reset</ion-item></center>
+</ion-list>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
